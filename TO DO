@@ -1,0 +1,8 @@
+CE QUI RESTE A FAIRE
+
+- Ajouter le formulaire de contact qui est present dans le fichier contact.html dans la partie de index.html
+- Faire en sorte que ce formulaire soit créer dynamiquement par django
+- implementation de l'envoi d'email.Le formulaire contact devrait permettent d'envoyer un email dans le compte ma_il_bade l'utilisateur
+- Implementation du portfolio (enregistrer et lister tous les projet du portfolio
+- Ajouter une deuxième route qui va pouvoir afficher toutes les information d'un projet réaliser et enregistrer
+- Ajouter les liens des different réseau sociaux
