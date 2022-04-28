@@ -78,7 +78,7 @@ class Profile(models.Model):
     available = models.BooleanField(default=False)
     status_job_one = models.CharField(max_length=100)
     status_job_two = models.CharField(max_length=100)
-    bio = models.CharField(max_length=100,
+    bio = models.TextField(max_length=100,
                            help_text="Short Bio (eg. I love cats and games)")
 
     address = models.CharField(max_length=100,
