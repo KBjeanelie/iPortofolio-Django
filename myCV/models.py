@@ -1,6 +1,8 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+from django.utils import timezone
 from django.utils.text import slugify
 
 
@@ -64,3 +66,59 @@ class Testimonials(models.Model):
     validated = models.BooleanField(default=False, verbose_name="validate")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image_profile = models.ImageField(upload_to="profile_pics/")
+    birthday = models.CharField(max_length=100)
+    degree = models.CharField(max_length=100)
+    age = models.IntegerField()
+    phone = models.CharField(max_length=100)
+    available = models.BooleanField(default=False)
+    status_job_one = models.CharField(max_length=100)
+    status_job_two = models.CharField(max_length=100)
+    bio = models.CharField(max_length=100,
+                           help_text="Short Bio (eg. I love cats and games)")
+
+    address = models.CharField(max_length=100,
+                               help_text="Enter Your Address"
+                               )
+
+    city = models.CharField(
+        max_length=100, help_text="Enter Your City"
+    )
+
+    country = models.CharField(max_length=100,
+                               help_text="Enter Your Country")
+
+    twitter_url = models.CharField(max_length=250, default="#",
+                                   blank=True, null=True,
+                                   help_text=
+                                   "Enter # if you don't have an account")
+    instagram_url = models.CharField(max_length=250, default="#",
+                                     blank=True, null=True,
+                                     help_text=
+                                     "Enter # if you don't have an account")
+    facebook_url = models.CharField(max_length=250, default="#",
+                                    blank=True, null=True,
+                                    help_text=
+                                    "Enter # if you don't have an account")
+    github_url = models.CharField(max_length=250, default="#",
+                                  blank=True, null=True,
+                                  help_text=
+                                  "Enter # if you don't have an account")
+
+    website_url = models.CharField(max_length=250, default="#",
+                                   blank=True, null=True,
+                                   help_text=
+                                   "Enter # if you don't have an account")
+
+    email_confirmed = models.BooleanField(default=False)
+
+    created_on = models.DateTimeField(default=timezone.now)
+
+    updated_on = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.user.username}'s Profile"
